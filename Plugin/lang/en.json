@@ -6,6 +6,8 @@
     "emote.command.client-only": "{lightred}This command can only be used by clients.",
     "emote.emotemenutitle": "Emote Menu",
     "emote.dancemenutitle": "Dance Menu",
+    "emote.usage.emote": "Usage: {lime}!{0} <emoteName>{default} (menu via SkinChanger / !equip)",
+    "emote.usage.dance": "Usage: {lime}!{0} <danceName>{default} (menu via SkinChanger / !equip)",
     "emote.setemote-usage": "Usage: {lime}!{0} target/#userid <emoteName>",
     "emote.setdance-usage": "Usage: {lime}!{0} target/#userid <danceName>",
     "emote.target-not-found": "{lightred}No targets found.",

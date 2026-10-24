@@ -145,7 +145,7 @@ public partial class Plugin
 public static class CallerIdentifier
 {
 	private static readonly string CurrentPluginName = Assembly.GetExecutingAssembly().GetName().Name!;
-    private static readonly string[] BlockAssemblies = ["System.", "FortniteEmotesNDancesAPI", "KitsuneMenu"];
+    private static readonly string[] BlockAssemblies = ["System.", "FortniteEmotesNDancesAPI"];
 
 	public static string GetCallingPluginName()
 	{

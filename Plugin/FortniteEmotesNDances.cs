@@ -11,6 +11,7 @@ using CounterStrikeSharp.API.Modules.UserMessages;
 using CounterStrikeSharp.API.Core.Translations;
 using Microsoft.Extensions.Logging;
 using FortniteEmotes.API;
+using System.Text.Json;
 
 namespace FortniteEmotes;
 
@@ -19,8 +20,8 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 {
     public override string ModuleName => "Fortnite Emotes & Dances";
     public override string ModuleDescription => "CS2 Port of Fortnite Emotes & Dances";
-    public override string ModuleAuthor => "Cruze (https://github.com/cruze03)";
-    public override string ModuleVersion => "1.1.8";
+    public override string ModuleAuthor => "Cruze & pRfect";
+    public override string ModuleVersion => "1.2.7";
 
     public required PluginConfig Config { get; set; } = new();
 
@@ -52,11 +53,30 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
         }
 
         Config = config;
+        Config.EmoteDances ??= new();
 
         g_EmoteTransMap = new();
         g_ChatTriggers = new();
         g_ListChatTriggers = new();
         g_CancelButtons = new();
+        InvalidateEmoteCatalogCache();
+
+        if (Config.EmoteDances.Count == 0)
+        {
+            Logger.LogError(
+                "[FortniteEmotes] EmoteDances пуст! Залей configs/plugins/FortniteEmotesNDances/FortniteEmotesNDances.json " +
+                "из релиза (полный список ~80 эмоутов). Иначе VIP/SkinChanger будут писать 'not found'.");
+        }
+        else
+        {
+            Logger.LogInformation(
+                "[FortniteEmotes] EmoteDances loaded: {Count} (emotes={Emotes}, dances={Dances})",
+                Config.EmoteDances.Count,
+                Config.EmoteDances.Count(e => e.IsEmote),
+                Config.EmoteDances.Count(e => !e.IsEmote));
+        }
+
+        RebuildEmoteTransMapFromRu();
 
         foreach (var emote in Config.EmoteDances)
         {
@@ -69,8 +89,6 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
                     g_ListChatTriggers.Add(trigger);
                 }
             }
-            if (!g_EmoteTransMap.ContainsKey(emote.Name))
-                g_EmoteTransMap.Add(emote.Name, Localizer[emote.Name]);
         }
 
         foreach (var emoteCommand in Config.EmoteCommand)
@@ -90,18 +108,7 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 
                 if (command.ArgCount == 1)
                 {
-                    switch (Config.EmoteMenuType)
-                    {
-                        case 0:
-                            ShowChatMenu(player, false);
-                            break;
-                        case 1:
-                            ShowCenterMenu(player, false);
-                            break;
-                        default:
-                            ShowKitsuneMenu(player, false);
-                            break;
-                    }
+                    player.PrintToChat($" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, "emote.usage.emote", emoteCommand)}");
                     return;
                 }
 
@@ -139,18 +146,7 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 
                 if (command.ArgCount == 1)
                 {
-                    switch (Config.EmoteMenuType)
-                    {
-                        case 0:
-                            ShowChatMenu(player, true);
-                            break;
-                        case 1:
-                            ShowCenterMenu(player, true);
-                            break;
-                        default:
-                            ShowKitsuneMenu(player, true);
-                            break;
-                    }
+                    player.PrintToChat($" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, "emote.usage.dance", danceCommand)}");
                     return;
                 }
 
@@ -312,7 +308,7 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
                 g_CancelButtons.Add(PlayerButtons.Attack.ToString());
             else if (button.Equals("crouch", StringComparison.CurrentCultureIgnoreCase))
                 g_CancelButtons.Add(PlayerButtons.Duck.ToString());
-            else if (button.Equals("scoreboard", StringComparison.CurrentCultureIgnoreCase) && Config.EmoteMenuType != 2)
+            else if (button.Equals("scoreboard", StringComparison.CurrentCultureIgnoreCase))
                 g_CancelButtons.Add(PlayerButtons.Scoreboard.ToString());
             else if (button.Equals("inspect", StringComparison.CurrentCultureIgnoreCase))
                 g_CancelButtons.Add(PlayerButtons.Inspect.ToString());
@@ -328,14 +324,21 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 
         if (!AreAllDependaciesInstalled(ref error))
         {
-            Logger.LogError($"Plugin failed to load because {error}");
-            Server.ExecuteCommand($"css_plugins unload {Path.GetFileNameWithoutExtension(ModulePath)}");
+            // Не выгружаем плагин: иначе SkinChanger/VIP не видят fortnite_emotes:* capabilities.
+            Logger.LogError(
+                "FortniteEmotes: зависимости не полные ({Error}). Soft-caps всё равно регистрируются. " +
+                "Проверьте: MultiAddonManager, shared/FortniteEmotesNDancesAPI.",
+                error);
         }
     }
 
     public override void Load(bool hotReload)
     {
         base.Load(hotReload);
+
+        // Сразу регистрируем caps — до любых проверок/зависимостей.
+        API_OnLoad();
+
         RegisterListener<Listeners.OnMapStart>(OnMapStart);
         RegisterListener<Listeners.OnTick>(OnTick);
         RegisterListener<Listeners.OnServerPrecacheResources>(OnServerPrecacheResources);
@@ -348,9 +351,6 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 
         if (Config.StopDamageWhenInEmote)
             RegisterListener<Listeners.OnEntityTakeDamagePre>(OnTakeDamage);
-
-        Menu_OnLoad();
-        API_OnLoad();
 
         EmotesEnable.ValueChanged += (sender, value) =>
         {
@@ -531,13 +531,10 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
                     continue;
                 }
 
-                if (Config.EmoteMenuType != 2 || (Config.EmoteMenuType == 2 && (Menu.GetMenus(player) == null || Menu.GetMenus(player)?.Count <= 0)))
+                if (g_CancelButtons.Any(button => player.Buttons.ToString().Contains(button)))
                 {
-                    if (g_CancelButtons.Any(button => player.Buttons.ToString().Contains(button)))
-                    {
-                        StopEmote(player);
-                        continue;
-                    }
+                    StopEmote(player);
+                    continue;
                 }
 
                 if (g_PlayerSettings[steamID].CameraProp != null && Config.CameraMoveable)

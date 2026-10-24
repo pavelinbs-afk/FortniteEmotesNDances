@@ -6,6 +6,8 @@
     "emote.command.client-only": "{lightred}Bu komut yalnızca istemciler tarafından kullanılabilir.",
     "emote.emotemenutitle": "İfade Menüsü",
     "emote.dancemenutitle": "Dans Menüsü",
+    "emote.usage.emote": "Kullanım: {lime}!{0} <ifadeAdı>{default} (menü: SkinChanger / !equip)",
+    "emote.usage.dance": "Kullanım: {lime}!{0} <dansAdı>{default} (menü: SkinChanger / !equip)",
     "emote.setemote-usage": "Kullanım: {lime}!{0} hedef/#userid <ifadeAdı>",
     "emote.setdance-usage": "Kullanım: {lime}!{0} hedef/#userid <dansAdı>",
     "emote.target-not-found": "{lightred}Hedef bulunamadı.",

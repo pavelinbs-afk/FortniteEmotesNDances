@@ -15,17 +15,19 @@
 
   <PropertyGroup>
     <CustomSourceDir>./gamedata</CustomSourceDir>
+    <!-- CSS loads GameData from addons/counterstrikesharp/gamedata/, not from the plugin folder -->
     <CustomTargetDir>$(PublishDir)../../../gamedata</CustomTargetDir>
   </PropertyGroup>
 
-  <Target Name="CopyCustomDirectory" AfterTargets="Publish">
+  <ItemGroup>
+    <CustomSourceFiles Include="$(CustomSourceDir)\**\*.*" />
+    <None Update="gamedata\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <Target Name="CopyCustomDirectory" AfterTargets="Build;Publish">
     <MakeDir Directories="$(CustomTargetDir)" />
     <Copy SourceFiles="@(CustomSourceFiles)" DestinationFolder="$(CustomTargetDir)" SkipUnchangedFiles="true" />
   </Target>
-
-  <ItemGroup>
-    <CustomSourceFiles Include="$(CustomSourceDir)\**\*.*" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CounterStrikeSharp.API" Version="1.0.375">
@@ -35,13 +37,23 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
 
-    <Reference Include="KitsuneMenu">
-      <HintPath>FortniteEmotesNDances/shared/KitsuneMenu/KitsuneMenu.dll</HintPath>
-    </Reference>
     <ProjectReference Include="..\API\FortniteEmotesNDancesAPI.csproj">
       <Private>false</Private>
     </ProjectReference>
     <None Update="lang\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Полный EmoteDances — класть в addons/counterstrikesharp/configs/plugins/FortniteEmotesNDances/ -->
+    <None Update="configs\**\*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+
+  <Target Name="CopyPluginConfig" AfterTargets="Build;Publish">
+    <PropertyGroup>
+      <CssConfigsDir>$(PublishDir)../../../configs/plugins/FortniteEmotesNDances</CssConfigsDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(CssConfigsDir)" />
+    <Copy SourceFiles="configs\FortniteEmotesNDances.json"
+          DestinationFolder="$(CssConfigsDir)"
+          SkipUnchangedFiles="false"
+          Condition="Exists('configs\FortniteEmotesNDances.json')" />
+  </Target>
 
 </Project>

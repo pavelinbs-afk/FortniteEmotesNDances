@@ -6,6 +6,8 @@
     "emote.command.client-only": "{lightred}这个命令只能由客户端使用。",
     "emote.emotemenutitle": "表情菜单",
     "emote.dancemenutitle": "舞蹈菜单",
+    "emote.usage.emote": "用法: {lime}!{0} <表情名称>{default} (菜单: SkinChanger / !equip)",
+    "emote.usage.dance": "用法: {lime}!{0} <舞蹈名称>{default} (菜单: SkinChanger / !equip)",
     "emote.setemote-usage": "用法: {lime}!{0} target/#userid <表情名称>",
     "emote.setdance-usage": "用法: {lime}!{0} target/#userid <舞蹈名称>",
     "emote.target-not-found": "{lightred}未找到目标。",

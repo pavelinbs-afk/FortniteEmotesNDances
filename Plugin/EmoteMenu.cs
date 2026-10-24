@@ -1,156 +1,94 @@
+using System.Text.Json;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Modules.Menu;
+using CounterStrikeSharp.API.Core.Capabilities;
 using CounterStrikeSharp.API.Core.Translations;
-using Microsoft.Extensions.Logging;
-using Menu;
-using Menu.Enums;
 using FortniteEmotes.API;
+using Microsoft.Extensions.Logging;
 
 namespace FortniteEmotes;
+
 public partial class Plugin
 {
-    public KitsuneMenu Menu { get; private set; } = null!;
-
-    private void Menu_OnLoad()
+    private void Emotes_RegisterSkinChangerCapabilities()
     {
-        Menu = new KitsuneMenu(this);
+        Capabilities.RegisterPluginCapability(
+            new PluginCapability<Func<CCSPlayerController, string?>>("skinchanger:get_emote_list"),
+            () => GetEmoteListJsonForVip);
+        Capabilities.RegisterPluginCapability(
+            new PluginCapability<Func<CCSPlayerController, string, bool>>("skinchanger:play_emote"),
+            () => PlayEmoteForVip);
+        Capabilities.RegisterPluginCapability(
+            new PluginCapability<Func<CCSPlayerController, string, bool>>("skinchanger:play_dance"),
+            () => PlayDanceForVip);
+        Capabilities.RegisterPluginCapability(
+            new PluginCapability<Func<CCSPlayerController, bool>>("skinchanger:stop_emote"),
+            () => StopEmoteForVip);
     }
 
-    private void ShowKitsuneMenu(CCSPlayerController player, bool isDance)
+    /// <summary>VIP/SkinChanger: JSON со списками emotes + dances.</summary>
+    internal string? GetEmoteListJsonForVip(CCSPlayerController? player)
     {
-        if (Menu == null)
-        {
-            Logger.LogError($"Menu object is null. Cannot show fortnite menu to {player.PlayerName}.");
-            return;
-        }
+        if (player == null || !player.IsValid)
+            return null;
 
-        string title = isDance ? Localizer.ForPlayer(player, "emote.dancemenutitle") : Localizer.ForPlayer(player, "emote.emotemenutitle");
-
-        List<MenuItem> items = [];
-        var emoteMap = new Dictionary<int, string>();
-        int i = 0;
-
-        foreach (var emote in Config.EmoteDances)
-        {
-            if (isDance && emote.IsEmote)
-                continue;
-            else if (!isDance && !emote.IsEmote)
-                continue;
-
-            bool hasPerm = HasPermision(player, emote.Permission);
-
-            items.Add(new MenuItem(hasPerm ? MenuItemType.Button : MenuItemType.Text, [new MenuValue(Localizer.ForPlayer(player, emote.Name))]));
-            emoteMap[i++] = Localizer.ForPlayer(player, emote.Name);
-        }
-
-        if (items.Count == 0)
-        {
-            player.PrintToChat($" {Localizer.ForPlayer(player, "emote.prefix")} No {(isDance ? "dances" : "emotes")} found.");
-            return;
-        }
-
-        Menu?.ShowScrollableMenu(player, title, items, (buttons, menu, selected) =>
-        {
-            if (selected == null) return;
-
-            if (buttons == MenuButtons.Select && emoteMap.TryGetValue(menu.Option, out var emoteSelected))
+        var emotes = Config.EmoteDances
+            .Where(e => e.IsEmote)
+            .Select(e => new
             {
-                var emote = GetEmoteByName(emoteSelected, !isDance);
+                id = e.Name,
+                title = Localizer.ForPlayer(player, e.Name),
+                isEmote = true
+            })
+            .ToList();
 
-                if (emote == null)
-                    return;
+        var dances = Config.EmoteDances
+            .Where(e => !e.IsEmote)
+            .Select(e => new
+            {
+                id = e.Name,
+                title = Localizer.ForPlayer(player, e.Name),
+                isEmote = false
+            })
+            .ToList();
 
-                string error = "";
-                if (!PlayEmote(player, emote, ref error))
-                {
-                    if (!string.IsNullOrEmpty(error))
-                        player.PrintToChat(error);
-                }
-            }
-        }, false, freezePlayer: true, disableDeveloper: !Config.KitsuneMenuDeveloperDisplay);
+        if (emotes.Count == 0 && dances.Count == 0)
+            return null;
+
+        return JsonSerializer.Serialize(new { emotes, dances });
     }
 
-    private void ShowChatMenu(CCSPlayerController player, bool isDance)
+    internal bool PlayEmoteForVip(CCSPlayerController? player, string? name)
+        => PlayNamedForVip(player, name, isEmote: true);
+
+    internal bool PlayDanceForVip(CCSPlayerController? player, string? name)
+        => PlayNamedForVip(player, name, isEmote: false);
+
+    internal bool StopEmoteForVip(CCSPlayerController? player)
     {
-        string title = isDance ? Localizer.ForPlayer(player, "emote.dancemenutitle") : Localizer.ForPlayer(player, "emote.emotemenutitle");
-
-        var menu = new ChatMenu(title);
-
-        var OnEmoteSelect = (CCSPlayerController player, ChatMenuOption option) =>
-        {
-            MenuManager.CloseActiveMenu(player);
-
-            string emoteName = option.Text;
-
-            var emote = GetEmoteByName(emoteName, !isDance);
-
-            if (emote == null)
-                return;
-
-            string error = "";
-            if (!PlayEmote(player, emote, ref error))
-            {
-                if (!string.IsNullOrEmpty(error))
-                    player.PrintToChat(error);
-            }
-        };
-
-        foreach (var emote in Config.EmoteDances)
-        {
-            if (isDance && emote.IsEmote)
-                continue;
-            else if (!isDance && !emote.IsEmote)
-                continue;
-
-            bool hasPerm = HasPermision(player, emote.Permission);
-
-            string emoteName = $"{Localizer.ForPlayer(player, $"{emote.Name}")}";
-
-            menu.AddMenuOption(emoteName, OnEmoteSelect, !hasPerm);
-        }
-
-        MenuManager.OpenChatMenu(player, menu);
+        if (player == null || !player.IsValid)
+            return false;
+        StopEmote(player);
+        return true;
     }
 
-    private void ShowCenterMenu(CCSPlayerController player, bool isDance)
+    private bool PlayNamedForVip(CCSPlayerController? player, string? name, bool isEmote)
     {
-        string title = isDance ? Localizer.ForPlayer(player, "emote.dancemenutitle") : Localizer.ForPlayer(player, "emote.emotemenutitle");
+        if (player == null || !player.IsValid)
+            return false;
 
-        var menu = new CenterHtmlMenu(title, this);
+        name = (name ?? "").Trim();
+        if (string.IsNullOrEmpty(name))
+            return false;
 
-        var OnEmoteSelect = (CCSPlayerController player, ChatMenuOption option) =>
-        {
-            MenuManager.CloseActiveMenu(player);
+        var emote = FindEmoteById(name)
+                    ?? GetEmoteByName(name, isEmote, partial: true)
+                    ?? GetEmoteByName(name, isEmote, partial: false);
 
-            string emoteName = option.Text;
+        if (emote == null)
+            return false;
 
-            var emote = GetEmoteByName(emoteName, !isDance);
-
-            if (emote == null)
-                return;
-
-            string error = "";
-            if (!PlayEmote(player, emote, ref error))
-            {
-                player.PrintToChat(error);
-            }
-        };
-
-        foreach (var emote in Config.EmoteDances)
-        {
-            if (isDance && emote.IsEmote)
-                continue;
-            else if (!isDance && !emote.IsEmote)
-                continue;
-
-            bool hasPerm = HasPermision(player, emote.Permission);
-
-            string emoteName = $"{Localizer.ForPlayer(player, $"{emote.Name}")}";
-
-            menu.AddMenuOption(emoteName, OnEmoteSelect, !hasPerm);
-        }
-
-        MenuManager.OpenCenterHtmlMenu(this, player, menu);
+        string error = "";
+        return PlayEmote(player, emote, ref error);
     }
 
     public string GetEmoteTranslation(string name)
@@ -158,8 +96,79 @@ public partial class Plugin
         return g_EmoteTransMap.ContainsKey(name) ? g_EmoteTransMap[name] : name;
     }
 
+    /// <summary>
+    /// Русские названия из Plugin/lang/ru.json (не зависит от языка клиента / Localizer).
+    /// </summary>
+    private void RebuildEmoteTransMapFromRu()
+    {
+        g_EmoteTransMap = new(StringComparer.OrdinalIgnoreCase);
+
+        Dictionary<string, string>? ru = null;
+        try
+        {
+            var ruPath = Path.Combine(ModuleDirectory, "lang", "ru.json");
+            if (!File.Exists(ruPath))
+                ruPath = Path.Combine(ModuleDirectory, "..", "lang", "ru.json");
+            if (File.Exists(ruPath))
+            {
+                ru = JsonSerializer.Deserialize<Dictionary<string, string>>(
+                    File.ReadAllText(ruPath),
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Не удалось прочитать lang/ru.json — названия останутся как id");
+        }
+
+        foreach (var emote in Config.EmoteDances)
+        {
+            if (string.IsNullOrWhiteSpace(emote.Name))
+                continue;
+
+            string title = emote.Name;
+            if (ru != null && ru.TryGetValue(emote.Name, out var t) && !string.IsNullOrWhiteSpace(t))
+                title = t.Trim();
+            else
+            {
+                // запасной вариант через Localizer
+                try
+                {
+                    var loc = Localizer[emote.Name];
+                    if (!string.IsNullOrWhiteSpace(loc) && loc != emote.Name)
+                        title = loc;
+                }
+                catch { /* ignore */ }
+            }
+
+            g_EmoteTransMap[emote.Name] = title;
+        }
+
+        Logger.LogInformation("[FortniteEmotes] Загружено русских названий: {Count}", g_EmoteTransMap.Count);
+        InvalidateEmoteCatalogCache();
+    }
+
+    /// <summary>Точный id из конфига (Name), без фильтра IsEmote.</summary>
+    public Emote? FindEmoteById(string name)
+    {
+        name = (name ?? "").Trim();
+        if (string.IsNullOrEmpty(name))
+            return null;
+        return Config.EmoteDances.FirstOrDefault(x =>
+            x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+    }
+
     public Emote? GetEmoteByName(string name, bool emote, bool partial = false)
     {
+        name = (name ?? "").Trim();
+        if (string.IsNullOrEmpty(name))
+            return null;
+
+        // VIP/SkinChanger передают id вида Emote_ThumbsUp — сначала точное совпадение Name.
+        var byId = FindEmoteById(name);
+        if (byId != null && byId.IsEmote == emote)
+            return byId;
+
         if (partial)
         {
             var sname = name.ToLower();
@@ -175,11 +184,8 @@ public partial class Plugin
 
                     foreach (var em in ems)
                     {
-                        // Don't search Emote_ and Dance_ prefix
                         if (em.Equals("Emote_") || em.Equals("Dance_"))
-                        {
                             continue;
-                        }
 
                         if (em.Equals(sname))
                             return -1;
@@ -217,6 +223,67 @@ public partial class Plugin
 
             return list.Count > 0 ? list.First() : null;
         }
-        return Config.EmoteDances.FirstOrDefault(x => GetEmoteTranslation(x.Name).Equals(name) && x.IsEmote == emote);
+
+        return Config.EmoteDances.FirstOrDefault(x =>
+            GetEmoteTranslation(x.Name).Equals(name, StringComparison.OrdinalIgnoreCase) &&
+            x.IsEmote == emote);
+    }
+
+    /// <summary>Каталог для SkinChanger VIP-меню (!equip). Без Localizer.ForPlayer — только кэш переводов.</summary>
+    public string? BuildEmoteCatalogJson(CCSPlayerController? player)
+    {
+        if (player == null || !player.IsValid)
+            return null;
+
+        try
+        {
+            if (_cachedEmoteCatalogJson != null)
+                return _cachedEmoteCatalogJson;
+
+            var emotes = new List<object>();
+            var dances = new List<object>();
+
+            foreach (var e in Config.EmoteDances)
+            {
+                var title = GetEmoteTranslation(e.Name);
+                if (string.IsNullOrWhiteSpace(title))
+                    title = e.Name;
+
+                if (e.IsEmote)
+                    emotes.Add(new { id = e.Name, title, isEmote = true });
+                else
+                    dances.Add(new { id = e.Name, title, isEmote = false });
+            }
+
+            if (emotes.Count == 0 && dances.Count == 0)
+                return null;
+
+            _cachedEmoteCatalogJson = System.Text.Json.JsonSerializer.Serialize(new { emotes, dances });
+            return _cachedEmoteCatalogJson;
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "BuildEmoteCatalogJson failed");
+            return null;
+        }
+    }
+
+    private string? _cachedEmoteCatalogJson;
+    private string? _cachedEmoteTitleMapJson;
+
+    internal void InvalidateEmoteCatalogCache()
+    {
+        _cachedEmoteCatalogJson = null;
+        _cachedEmoteTitleMapJson = null;
+    }
+
+    /// <summary>JSON-объект id→русское название (без Localizer.ForPlayer).</summary>
+    public string GetEmoteTitleMapJson()
+    {
+        if (_cachedEmoteTitleMapJson != null)
+            return _cachedEmoteTitleMapJson;
+
+        _cachedEmoteTitleMapJson = System.Text.Json.JsonSerializer.Serialize(g_EmoteTransMap);
+        return _cachedEmoteTitleMapJson;
     }
 }

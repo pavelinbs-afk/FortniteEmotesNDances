@@ -1,0 +1,3503 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc28:version{fb63b6ca-f435-4aa0-a2c7-c66ddc651dca} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "BoneMarkupList"
+				children = [  ]
+				bone_cull_type = "None"
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "unnamed_1"
+						filename = "characters/kolka/fortnite_dance_unnamed_1.dmx"
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "pistol"
+						ignore_rotation = false
+						parent_bone = "leg_upper_r"
+						relative_origin = [ -1.372978, 2.316957, -3.822472 ]
+						relative_angles = [ -9.218499, 178.445969, 84.76046 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "knife"
+						ignore_rotation = false
+						parent_bone = "leg_upper_l"
+						relative_origin = [ 11.744625, -1.751543, 2.1231 ]
+						relative_angles = [ -8.844357, 148.863007, 75.009193 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "eholster"
+						ignore_rotation = false
+						parent_bone = "pelvis"
+						relative_origin = [ -2.380608, 0.280497, 7.962839 ]
+						relative_angles = [ -1.235589, -178.636017, 70.64489 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "grenade0"
+						ignore_rotation = false
+						parent_bone = "spine_0"
+						relative_origin = [ -0.935169, -3.11418, -0.75018 ]
+						relative_angles = [ 84.804298, -7.996237, 0.003672 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "grenade1"
+						ignore_rotation = false
+						parent_bone = "spine_0"
+						relative_origin = [ -0.505054, 1.70306, -9.33189 ]
+						relative_angles = [ 85.839699, -7.999268, 0.000571 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "grenade2"
+						ignore_rotation = false
+						parent_bone = "spine_0"
+						relative_origin = [ -0.475517, 2.42783, -7.281434 ]
+						relative_angles = [ 88.478371, 23.998423, 28.477905 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "grenade3"
+						ignore_rotation = false
+						parent_bone = "spine_0"
+						relative_origin = [ -0.546654, 4.182329, -5.779805 ]
+						relative_angles = [ 82.600105, 21.620901, 31.120777 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "grenade4"
+						ignore_rotation = false
+						parent_bone = "spine_0"
+						relative_origin = [ -0.254982, 7.37303, -5.62379 ]
+						relative_angles = [ 87.859711, 148.459717, 159.376785 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "defusekit"
+						ignore_rotation = false
+						parent_bone = "spine_0"
+						relative_origin = [ -1.451511, -4.84167, -1.200816 ]
+						relative_angles = [ -2.000002, 74.999992, 91.999977 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "c4"
+						ignore_rotation = false
+						parent_bone = "spine_3"
+						relative_origin = [ -0.613552, -5.092093, -4.00366 ]
+						relative_angles = [ 0.069525, -2.765387, 95.133804 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "primary_smg"
+						ignore_rotation = false
+						parent_bone = "spine_3"
+						relative_origin = [ -1.777611, 7.211025, 1.825149 ]
+						relative_angles = [ -26.228292, 175.738968, -13.059966 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "primary"
+						ignore_rotation = false
+						parent_bone = "jiggle_primary"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "clip_limit"
+						ignore_rotation = false
+						parent_bone = "head_0"
+						relative_origin = [ 7.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "look_straight_ahead_stand"
+						ignore_rotation = false
+						parent_bone = "root_motion"
+						relative_origin = [ -5.72855, 63.115799, 9.31675 ]
+						relative_angles = [ -89.999992, -89.999992, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "look_straight_ahead_crouch"
+						ignore_rotation = false
+						parent_bone = "root_motion"
+						relative_origin = [ -7.75769, 45.0508, 14.8153 ]
+						relative_angles = [ -89.999992, -89.999992, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "gun_accurate"
+						ignore_rotation = false
+						parent_bone = "weapon_hand_r"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "axis_of_intent"
+						ignore_rotation = false
+						parent_bone = "weaponhier_jnt"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -89.999992, -89.999992, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "leg_l_iktarget"
+						ignore_rotation = false
+						parent_bone = "leg_l_iktarget"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "leg_r_iktarget"
+						ignore_rotation = false
+						parent_bone = "leg_r_iktarget"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "weaponhier_r_iktarget"
+						ignore_rotation = false
+						parent_bone = "weaponhier_r_iktarget"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "weaponhier_l_iktarget"
+						ignore_rotation = false
+						parent_bone = "weaponhier_l_iktarget"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "weapon_hand_l"
+						ignore_rotation = false
+						parent_bone = "weapon_hand_l"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+					{
+						_class = "Attachment"
+						name = "weapon_hand_r"
+						ignore_rotation = false
+						parent_bone = "weapon_hand_r"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "DanceMoves"
+						source_filename = "characters/kolka/fortnite_dance_DanceMoves.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "ElectroShuffle"
+						source_filename = "characters/kolka/fortnite_dance_ElectroShuffle.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_AerobicChamp"
+						source_filename = "characters/kolka/fortnite_dance_Emote_AerobicChamp.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_aerobics_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_BandOfTheFort"
+						source_filename = "characters/kolka/fortnite_dance_Emote_BandOfTheFort.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Bendy"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Bendy.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_music_emotes_bendy"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_BlowKiss"
+						source_filename = "characters/kolka/fortnite_dance_Emote_BlowKiss.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Boogie_Down"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Boogie_Down.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_boogiedown"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Boogie_Down_Intro"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Boogie_Down_Intro.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Bring_It_On"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Bring_It_On.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Calculated"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Calculated.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Capoeira"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Capoeira.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_capoeira"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Celebration_Loop"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Celebration_Loop.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Charleston"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Charleston.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Chicken"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Chicken.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_chicken_foley_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Chug"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Chug.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Confused"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Confused.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Cry"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Cry.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_cry"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dab"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dab.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"dab"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_Breakdance"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_Breakdance.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_Disco_T3"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_Disco_T3.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_Loser"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_Loser.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_Loser_CT"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_Loser_CT.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_NoBones"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_NoBones.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_Pump"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_Pump.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_dance_pump"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_RideThePony"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_RideThePony.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_Shoot"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_Shoot.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_groove_jam_a"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_SwipeIt"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_SwipeIt.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emotes_music_swipeit"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Dance_Worm"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Dance_Worm.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_DG_Disco"
+						source_filename = "characters/kolka/fortnite_dance_Emote_DG_Disco.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_disco"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_DustingOffHands"
+						source_filename = "characters/kolka/fortnite_dance_Emote_DustingOffHands.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_dustingoffhands_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_DustOffShoulders"
+						source_filename = "characters/kolka/fortnite_dance_Emote_DustOffShoulders.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_EasternBloc"
+						source_filename = "characters/kolka/fortnite_dance_Emote_EasternBloc.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"eastern_bloc_musc_setup_d"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_EasternBloc_Start"
+						source_filename = "characters/kolka/fortnite_dance_Emote_EasternBloc_Start.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Facepalm"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Facepalm.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_facepalm_foley_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_FancyFeet"
+						source_filename = "characters/kolka/fortnite_dance_Emote_FancyFeet.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_fresh_music"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_FancyFeet_CT"
+						source_filename = "characters/kolka/fortnite_dance_Emote_FancyFeet_CT.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Fishing"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Fishing.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Flex"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Flex.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"flex"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_FlippnSexy"
+						source_filename = "characters/kolka/fortnite_dance_Emote_FlippnSexy.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_flippnsexy"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_FlossDance"
+						source_filename = "characters/kolka/fortnite_dance_Emote_FlossDance.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_floss_music"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Fonzie_Pistol"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Fonzie_Pistol.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Fresh"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Fresh.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_golfclap"
+						source_filename = "characters/kolka/fortnite_dance_Emote_golfclap.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_GrooveJam"
+						source_filename = "characters/kolka/fortnite_dance_Emote_GrooveJam.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_groove_jam_a"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_guitar"
+						source_filename = "characters/kolka/fortnite_dance_Emote_guitar.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"br_emote_shred_guitar_mix_03_loop"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_HandSignals"
+						source_filename = "characters/kolka/fortnite_dance_Emote_HandSignals.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_HeelClick"
+						source_filename = "characters/kolka/fortnite_dance_Emote_HeelClick.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_heelclick"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Hillbilly_Shuffle"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Hillbilly_Shuffle.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_hillbilly_shuffle"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Hillbilly_Shuffle_Intro"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Hillbilly_Shuffle_Intro.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Hip_Hop"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Hip_Hop.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"hip_hop_gs_vii_trap_mix_01_loop"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Hiphop_01"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Hiphop_01.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"hip_hop_good_vibes_mix_01_loop"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Hotstuff"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Hotstuff.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_hotstuff"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Hula"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Hula.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_hula_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Hula_Start"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Hula_Start.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_IBreakYou"
+						source_filename = "characters/kolka/fortnite_dance_Emote_IBreakYou.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_IHeartYou"
+						source_filename = "characters/kolka/fortnite_dance_Emote_IHeartYou.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_InfiniDab_Intro"
+						source_filename = "characters/kolka/fortnite_dance_Emote_InfiniDab_Intro.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_InfiniDab_Loop"
+						source_filename = "characters/kolka/fortnite_dance_Emote_InfiniDab_Loop.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Intensity_Loop"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Intensity_Loop.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_intensity"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Intensity_Start"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Intensity_Start.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_IrishJig"
+						source_filename = "characters/kolka/fortnite_dance_Emote_IrishJig.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_irish_jig_foley_music_loop"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_IrishJig_Start"
+						source_filename = "characters/kolka/fortnite_dance_Emote_IrishJig_Start.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_KoreanEagle"
+						source_filename = "characters/kolka/fortnite_dance_Emote_KoreanEagle.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_music_emotes_koreaneagle"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Kpop_02"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Kpop_02.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_kpop_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Laugh"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Laugh.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_laugh_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Laugh_CT"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Laugh_CT.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_LivingLarge"
+						source_filename = "characters/kolka/fortnite_dance_Emote_LivingLarge.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_livinglarge_a"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Luchador"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Luchador.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_luchador"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Make_It_Rain"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Make_It_Rain.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Maracas"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Maracas.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Mask_Off_Intro"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Mask_Off_Intro.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Mask_Off_Loop"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Mask_Off_Loop.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_NotToday"
+						source_filename = "characters/kolka/fortnite_dance_Emote_NotToday.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"not_today"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_PopLock"
+						source_filename = "characters/kolka/fortnite_dance_Emote_PopLock.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_poplock"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_PopRock"
+						source_filename = "characters/kolka/fortnite_dance_Emote_PopRock.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_poprock_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_RobotDance"
+						source_filename = "characters/kolka/fortnite_dance_Emote_RobotDance.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_robot_music"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_RockPaperScissor_Paper"
+						source_filename = "characters/kolka/fortnite_dance_Emote_RockPaperScissor_Paper.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_RockPaperScissor_Rock"
+						source_filename = "characters/kolka/fortnite_dance_Emote_RockPaperScissor_Rock.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_RockPaperScissor_Scissor"
+						source_filename = "characters/kolka/fortnite_dance_Emote_RockPaperScissor_Scissor.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Salt"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Salt.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Salute"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Salute.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emote_salute_foley_01"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_SmoothDrive"
+						source_filename = "characters/kolka/fortnite_dance_Emote_SmoothDrive.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Snap"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Snap.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_snap1"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_StageBow"
+						source_filename = "characters/kolka/fortnite_dance_Emote_StageBow.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_TechnoZombie"
+						source_filename = "characters/kolka/fortnite_dance_Emote_TechnoZombie.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_ThumbsDown"
+						source_filename = "characters/kolka/fortnite_dance_Emote_ThumbsDown.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_ThumbsUp"
+						source_filename = "characters/kolka/fortnite_dance_Emote_ThumbsUp.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Twist"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Twist.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"athena_emotes_music_twist"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_WarehouseDance_Loop"
+						source_filename = "characters/kolka/fortnite_dance_Emote_WarehouseDance_Loop.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_warehouse"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_WarehouseDance_Start"
+						source_filename = "characters/kolka/fortnite_dance_Emote_WarehouseDance_Start.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Wave2"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Wave2.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Wiggle"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Wiggle.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Yeet"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Yeet.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_yeet"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Youre_Awesome"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Youre_Awesome.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"wiggle_music_loop"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+					{
+						_class = "AnimFile"
+						name = "Emote_Zippy_Dance"
+						source_filename = "characters/kolka/fortnite_dance_Emote_Zippy_Dance.dmx"
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 0
+								event_keys = 
+								{
+									name = soundevent:"emote_zippy_a"
+									stop_on_seq_change = true
+									use_layer_sequence = false
+									tags = null
+								}
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "character_arm_config"
+						game_keys = 
+						{
+							default_glove_arm_model = resource:""
+							sleeve_model = resource:""
+							skintone_material = resource:"characters/models/shared/arms/bare_arms/materials/bare_arm_133.vmat"
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "head_0"
+							radius = 4.56249
+							point0 = [ 0.548162, 1.32232, 0.0 ]
+							point1 = [ 2.72269, 0.298181, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_0"
+							radius = 5.86083
+							point0 = [ -2.7, 1.0, 3.0 ]
+							point1 = [ -2.7, 1.0, -3.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_2"
+							radius = 5.86083
+							point0 = [ -2.61519, 0.547004, 1.9 ]
+							point1 = [ -2.61519, 0.547004, -1.9 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "spine_3"
+							radius = 7.10434
+							point0 = [ 0.467953, 0.88271, 1.9 ]
+							point1 = [ 0.467953, 0.88271, -1.9 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "leg_upper_r"
+							radius = 4.11706
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -16.98, 0.215972, -0.592158 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "leg_upper_l"
+							radius = 4.11706
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 16.98, -0.215972, 0.592158 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "leg_lower_r"
+							radius = 3.35306
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -14.256, -0.069175, -0.686705 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "leg_lower_l"
+							radius = 3.35306
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 14.256, 0.069175, 0.686705 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "arm_upper_l"
+							radius = 3.18769
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 7.86575, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "arm_upper_r"
+							radius = 3.18769
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ -7.86575, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "arm_lower_l"
+							radius = 1.84066
+							point0 = [ -1.18304, 0.0, 0.0 ]
+							point1 = [ 7.86575, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "arm_lower_r"
+							radius = 1.84066
+							point0 = [ 1.18304, 0.0, 0.0 ]
+							point1 = [ -7.86575, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_r"
+							radius = 1.84066
+							point0 = [ 0.582719, -0.510149, -0.05536 ]
+							point1 = [ -2.42216, -1.05179, -0.111563 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "hand_l"
+							radius = 1.84066
+							point0 = [ -0.582719, 0.510149, 0.05536 ]
+							point1 = [ 2.42216, 1.05179, 0.111563 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "ankle_r"
+							radius = 2.28692
+							point0 = [ 0.143441, 2.52988, 0.392931 ]
+							point1 = [ -7.64466, -1.16415, -0.130248 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						name = ""
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "ankle_l"
+							radius = 2.28692
+							point0 = [ -0.143441, -2.52988, -0.392931 ]
+							point1 = [ 7.64466, 1.16415, 0.130248 ]
+						}
+					},
+					{
+						_class = "MovementSettings"
+						name = ""
+						movementsettings = 
+						{
+							enable_crouch_speeds = false
+							standard_speeds = 
+							{
+								Slow = 
+								{
+									speed = 75.0
+									uses_range = false
+								}
+							}
+							speeds = [  ]
+							maxSpringTension = 100.0
+							springConstant = 10.0
+							useSmoothPaths = true
+							sharpStartAngle = 180.0
+						}
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "cstrike"
+						children = 
+						[
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ -0.666229, 0.498319, -0.513488 ]
+								point1 = [ 3.613243, -0.486028, -0.275229 ]
+								name = "head_0"
+								parent_bone = "head_0"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 1
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.0, -0.4, 0.0 ]
+								point1 = [ 1.4, -0.2, 0.0 ]
+								name = "neck_0"
+								parent_bone = "neck_0"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 8
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 4.0
+								point0 = [ -2.7, 1.1, -3.2 ]
+								point1 = [ -2.7, 1.1, 3.2 ]
+								name = "pelvis"
+								parent_bone = "pelvis"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 3
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 4.0
+								point0 = [ 1.4, 0.8, 3.1 ]
+								point1 = [ 1.4, 0.8, -3.1 ]
+								name = "spine_0"
+								parent_bone = "spine_0"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 3
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 4.0
+								point0 = [ 3.8, 0.8, -2.4 ]
+								point1 = [ 3.8, 0.4, 2.4 ]
+								name = "spine_1"
+								parent_bone = "spine_1"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 2
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 4.0
+								point0 = [ 4.8, 0.15, -4.1 ]
+								point1 = [ 4.8, 0.15, 4.1 ]
+								name = "spine_2"
+								parent_bone = "spine_2"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 2
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 2.5, -0.6, -6.0 ]
+								point1 = [ 2.5, -0.6, 6.0 ]
+								name = "spine_3"
+								parent_bone = "spine_3"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 2
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 1.427303, -0.928717, -0.308571 ]
+								point1 = [ 15.968288, 0.737673, 0.514057 ]
+								name = "leg_upper_l"
+								parent_bone = "leg_upper_l"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 6
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ -1.65147, 0.578175, 0.313816 ]
+								point1 = [ -15.463168, -1.013103, 0.213576 ]
+								name = "leg_upper_r"
+								parent_bone = "leg_upper_r"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 7
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.136762, 1.012353, 0.499084 ]
+								point1 = [ 19.312101, 0.296207, 1.024005 ]
+								name = "leg_lower_l"
+								parent_bone = "leg_lower_l"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 6
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ -0.130984, -1.104598, -0.380697 ]
+								point1 = [ -19.066744, 0.584339, -0.73912 ]
+								name = "leg_lower_r"
+								parent_bone = "leg_lower_r"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 7
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.518002, -6.13789, 0.026754 ]
+								point1 = [ 8.518002, -1.96789, 0.876754 ]
+								name = "ankle_l"
+								parent_bone = "ankle_l"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 6
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ -9.135962, 1.53963, -0.865456 ]
+								point1 = [ -1.175962, 5.72963, -0.015456 ]
+								name = "ankle_r"
+								parent_bone = "ankle_r"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 7
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.0, 0.3, 0.0 ]
+								point1 = [ 3.59, 1.15, 0.11 ]
+								name = "hand_l"
+								parent_bone = "hand_l"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 4
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.0, -0.3, 0.02 ]
+								point1 = [ -3.44, -1.17, -0.09 ]
+								name = "hand_r"
+								parent_bone = "hand_r"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 5
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.0, 0.0, 0.0 ]
+								point1 = [ 11.2, 0.0, 0.0 ]
+								name = "arm_upper_l"
+								parent_bone = "arm_upper_l"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 4
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.0, 0.0, 0.0 ]
+								point1 = [ 10.0, 0.0, 0.0 ]
+								name = "arm_lower_l"
+								parent_bone = "arm_lower_l"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 4
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.0, 0.0, 0.0 ]
+								point1 = [ -11.2, 0.0, 0.0 ]
+								name = "arm_upper_r"
+								parent_bone = "arm_upper_r"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 5
+							},
+							{
+								_class = "HitboxCapsule"
+								radius = 3.0
+								point0 = [ 0.0, 0.0, 0.0 ]
+								point1 = [ -10.0, 0.0, -0.5 ]
+								name = "arm_lower_r"
+								parent_bone = "arm_lower_r"
+								surface_property = "playerflesh"
+								translation_only = false
+								group_id = 5
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "pelvis"
+						origin = [ 0.0, 0.000001, 42.713982 ]
+						angles = [ -89.999992, -97.125008, 0.0 ]
+						do_not_discard = true
+						children = 
+						[
+							{
+								_class = "Bone"
+								name = "spine_0"
+								origin = [ 0.9342, 0.090506, -0.000003 ]
+								angles = [ -0.000002, 6.615997, 0.0 ]
+								do_not_discard = true
+								children = 
+								[
+									{
+										_class = "Bone"
+										name = "spine_1"
+										origin = [ 4.06633, 0.000007, 0.000006 ]
+										angles = [ -0.10302, -6.616004, -0.000057 ]
+										do_not_discard = true
+										children = 
+										[
+											{
+												_class = "Bone"
+												name = "spine_2"
+												origin = [ 4.744022, -0.000004, 0.000002 ]
+												angles = [ 0.10124, -10.60803, -0.018907 ]
+												do_not_discard = true
+												children = 
+												[
+													{
+														_class = "Bone"
+														name = "spine_3"
+														origin = [ 6.347706, -0.000015, 0.000574 ]
+														angles = [ -0.000002, 14.001031, -0.0 ]
+														do_not_discard = true
+														children = 
+														[
+															{
+																_class = "Bone"
+																name = "neck_0"
+																origin = [ 6.515144, 0.000447, 0.000177 ]
+																angles = [ -0.000001, 23.986019, -0.000001 ]
+																do_not_discard = true
+																children = 
+																[
+																	{
+																		_class = "Bone"
+																		name = "head_0"
+																		origin = [ 5.762108, -0.000181, 0.00001 ]
+																		angles = [ -0.000002, -17.379015, -0.000057 ]
+																		do_not_discard = true
+																		children = 
+																		[
+																			{
+																				_class = "Bone"
+																				name = "eyeball_l"
+																				origin = [ 1.786224, 3.161595, 1.266487 ]
+																				angles = [ -0.0, 90.0, 89.999992 ]
+																				do_not_discard = true
+																			},
+																			{
+																				_class = "Bone"
+																				name = "eyeball_r"
+																				origin = [ 1.786224, 3.161592, -1.266489 ]
+																				angles = [ -0.0, 90.0, 89.999992 ]
+																				do_not_discard = true
+																			},
+																			{
+																				_class = "Bone"
+																				name = "eye_target"
+																				origin = [ -0.000038, 99.999184, -0.000009 ]
+																				angles = [ -0.0, 90.0, 89.999992 ]
+																				do_not_discard = true
+																			},
+																		]
+																	},
+																	{
+																		_class = "Bone"
+																		name = "jiggle_hood"
+																		origin = [ 1.022224, -3.844389, -0.010686 ]
+																		angles = [ 86.788246, -84.253624, 29.642828 ]
+																		do_not_discard = true
+																	},
+																	{
+																		_class = "Bone"
+																		name = "head_0_twist"
+																		origin = [ 2.881069, 0.000013, 0.0 ]
+																		angles = [ 0.0, 0.0, 0.0 ]
+																		do_not_discard = true
+																	},
+																]
+															},
+															{
+																_class = "Bone"
+																name = "clavicle_r"
+																origin = [ 4.311356, 3.005667, -1.269203 ]
+																angles = [ -61.86219, 63.958408, 115.413704 ]
+																do_not_discard = true
+																children = 
+																[
+																	{
+																		_class = "Bone"
+																		name = "arm_upper_r"
+																		origin = [ -6.665439, 0.000508, 0.000519 ]
+																		angles = [ -39.352238, 28.740202, -1.254153 ]
+																		do_not_discard = true
+																		children = 
+																		[
+																			{
+																				_class = "Bone"
+																				name = "arm_lower_r"
+																				origin = [ -11.596657, 0.014354, 0.000519 ]
+																				angles = [ 0.000236, 0.480546, 0.00099 ]
+																				do_not_discard = true
+																				children = 
+																				[
+																					{
+																						_class = "Bone"
+																						name = "hand_r"
+																						origin = [ -11.486942, 0.000044, -0.000092 ]
+																						angles = [ 6.947248, 2.179246, 86.388084 ]
+																						do_not_discard = true
+																						children = 
+																						[
+																							{
+																								_class = "Bone"
+																								name = "weapon_hand_r"
+																								origin = [ -2.790991, -1.123985, -0.295393 ]
+																								angles = [ -0.000019, -179.999985, -0.000065 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_middle_0_r"
+																								origin = [ -4.047124, 0.238338, -0.096433 ]
+																								angles = [ -4.023481, 5.731634, 6.64461 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_middle_1_r"
+																										origin = [ -2.075656, 0.0, -0.000039 ]
+																										angles = [ 1.56847, 5.244507, -0.162775 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_middle_2_r"
+																												origin = [ -1.413229, 0.000107, -0.000017 ]
+																												angles = [ 0.354603, 2.342644, 0.03329 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_ring_0_r"
+																								origin = [ -3.629876, -0.000053, -1.048803 ]
+																								angles = [ -14.016614, 2.135157, 2.594773 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_ring_1_r"
+																										origin = [ -1.910849, -0.000034, -0.000054 ]
+																										angles = [ 0.032484, 3.794755, 0.005617 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_ring_2_r"
+																												origin = [ -1.280601, -0.000011, -0.000066 ]
+																												angles = [ 0.519898, 7.678322, 0.009742 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_pinky_0_r"
+																								origin = [ -3.099358, -0.35043, -1.901159 ]
+																								angles = [ -17.882141, 0.252145, -3.981419 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_pinky_1_r"
+																										origin = [ -1.511061, -0.000038, -0.000053 ]
+																										angles = [ 0.828953, 5.105114, -0.086518 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_pinky_2_r"
+																												origin = [ -0.872564, 0.0, -0.000059 ]
+																												angles = [ -1.32726, 2.654914, 0.081934 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_index_0_r"
+																								origin = [ -4.081377, -0.000057, 1.048756 ]
+																								angles = [ 0.388266, 9.31944, 13.518651 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_index_1_r"
+																										origin = [ -1.995636, -0.000053, -0.000012 ]
+																										angles = [ 0.631113, 3.943497, 0.113448 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_index_2_r"
+																												origin = [ -1.268877, 0.0, 0.000015 ]
+																												angles = [ -2.098572, 0.795895, 0.196123 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_thumb_0_r"
+																								origin = [ -1.423078, -0.741688, 1.176383 ]
+																								angles = [ 31.929651, 33.104179, 89.944748 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_thumb_1_r"
+																										origin = [ -1.698902, -0.000031, 0.000044 ]
+																										angles = [ -5.664093, 9.923287, 0.44771 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_thumb_2_r"
+																												origin = [ -1.566296, -0.000002, 0.000046 ]
+																												angles = [ 0.358438, 7.231532, 0.067838 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_middle_meta_r"
+																								origin = [ -0.807771, -0.015495, 0.22451 ]
+																								angles = [ -5.640267, -4.480828, 5.933862 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_pinky_meta_r"
+																								origin = [ -0.562848, -0.124939, -0.989247 ]
+																								angles = [ -19.70248, 5.079204, -0.79086 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_index_meta_r"
+																								origin = [ -0.802758, -0.215038, 0.873644 ]
+																								angles = [ 3.05081, -3.750084, 12.112557 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_ring_meta_r"
+																								origin = [ -0.711667, -0.057678, -0.410456 ]
+																								angles = [ -12.336212, -1.130929, 3.830362 ]
+																								do_not_discard = true
+																							},
+																						]
+																					},
+																					{
+																						_class = "Bone"
+																						name = "arm_lower_r_twist1"
+																						origin = [ -7.657948, 0.000031, -0.000046 ]
+																						angles = [ -0.000017, 0.000055, 0.000022 ]
+																						do_not_discard = true
+																					},
+																					{
+																						_class = "Bone"
+																						name = "arm_lower_r_twist"
+																						origin = [ -3.828957, 0.000006, 0.000004 ]
+																						angles = [ -0.000015, 0.0, -0.000003 ]
+																						do_not_discard = true
+																					},
+																				]
+																			},
+																			{
+																				_class = "Bone"
+																				name = "arm_upper_r_twist1"
+																				origin = [ -7.731094, 0.009565, 0.000397 ]
+																				angles = [ 0.00006, 0.000017, 0.000019 ]
+																				do_not_discard = true
+																			},
+																			{
+																				_class = "Bone"
+																				name = "arm_upper_r_twist"
+																				origin = [ -3.865448, 0.000029, 0.000088 ]
+																				angles = [ -0.000025, 0.000006, 0.000006 ]
+																				do_not_discard = true
+																			},
+																			{
+																				_class = "Bone"
+																				name = "pect_r_aimat"
+																				origin = [ -0.000031, -0.000015, -0.000031 ]
+																				angles = [ 50.503887, 0.848239, 81.062553 ]
+																				do_not_discard = true
+																			},
+																		]
+																	},
+																	{
+																		_class = "Bone"
+																		name = "scapula_r"
+																		origin = [ -5.998229, 0.409452, 1.968689 ]
+																		angles = [ -73.39431, -74.843521, -146.596619 ]
+																		do_not_discard = true
+																	},
+																]
+															},
+															{
+																_class = "Bone"
+																name = "clavicle_l"
+																origin = [ 4.311298, 3.005507, 1.270796 ]
+																angles = [ -61.86187, -116.043518, 115.415405 ]
+																do_not_discard = true
+																children = 
+																[
+																	{
+																		_class = "Bone"
+																		name = "arm_upper_l"
+																		origin = [ 6.665456, -0.000179, 0.000614 ]
+																		angles = [ -39.351433, 28.739738, -1.253578 ]
+																		do_not_discard = true
+																		children = 
+																		[
+																			{
+																				_class = "Bone"
+																				name = "arm_lower_l"
+																				origin = [ 11.596636, -0.011968, -0.000435 ]
+																				angles = [ 0.000229, 0.48054, 0.000058 ]
+																				do_not_discard = true
+																				children = 
+																				[
+																					{
+																						_class = "Bone"
+																						name = "hand_l"
+																						origin = [ 11.486925, 0.000001, -0.000061 ]
+																						angles = [ 6.947221, 2.179344, 86.388054 ]
+																						do_not_discard = true
+																						children = 
+																						[
+																							{
+																								_class = "Bone"
+																								name = "weapon_hand_l"
+																								origin = [ 2.790956, 1.123981, 0.295403 ]
+																								angles = [ -0.000031, -179.999924, -0.00005 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_middle_0_l"
+																								origin = [ 4.047087, -0.238468, 0.096325 ]
+																								angles = [ -4.023591, 5.731547, 6.644549 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_middle_1_l"
+																										origin = [ 2.075601, -0.000107, -0.000057 ]
+																										angles = [ 1.568415, 5.244567, -0.161746 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_middle_2_l"
+																												origin = [ 1.413227, -0.000202, -0.000119 ]
+																												angles = [ 0.354604, 2.34265, 0.033288 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_ring_0_l"
+																								origin = [ 3.629829, -0.000053, 1.048718 ]
+																								angles = [ -14.01661, 2.134928, 2.595741 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_ring_1_l"
+																										origin = [ 1.910804, -0.000004, -0.000068 ]
+																										angles = [ 0.032485, 3.794704, 0.005614 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_ring_2_l"
+																												origin = [ 1.280586, 0.000031, -0.000098 ]
+																												angles = [ 0.519899, 7.678329, 0.009739 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_pinky_0_l"
+																								origin = [ 3.099295, 0.350254, 1.901104 ]
+																								angles = [ -17.881956, 0.252861, -3.980691 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_pinky_1_l"
+																										origin = [ 1.511015, -0.000118, -0.000061 ]
+																										angles = [ 0.828843, 5.104139, -0.08749 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_pinky_2_l"
+																												origin = [ 0.872508, -0.000164, -0.000074 ]
+																												angles = [ -1.327311, 2.65486, 0.081935 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_index_0_l"
+																								origin = [ 4.08141, -0.000046, -1.048861 ]
+																								angles = [ 0.388104, 9.319395, 13.519539 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_index_1_l"
+																										origin = [ 1.995573, -0.000038, -0.000051 ]
+																										angles = [ 0.631114, 3.943498, 0.113441 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_index_2_l"
+																												origin = [ 1.268888, -0.000069, -0.000096 ]
+																												angles = [ -2.098455, 0.796864, 0.196119 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_thumb_0_l"
+																								origin = [ 1.423039, 0.74155, -1.176417 ]
+																								angles = [ 31.929167, 33.104691, 89.945602 ]
+																								do_not_discard = true
+																								children = 
+																								[
+																									{
+																										_class = "Bone"
+																										name = "finger_thumb_1_l"
+																										origin = [ 1.69883, -0.000017, 0.000038 ]
+																										angles = [ -5.664089, 9.923287, 0.447708 ]
+																										do_not_discard = true
+																										children = 
+																										[
+																											{
+																												_class = "Bone"
+																												name = "finger_thumb_2_l"
+																												origin = [ 1.566229, -0.000025, -0.000023 ]
+																												angles = [ 0.358506, 7.231587, 0.067838 ]
+																												do_not_discard = true
+																											},
+																										]
+																									},
+																								]
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_middle_meta_l"
+																								origin = [ 0.807891, 0.015736, -0.224474 ]
+																								angles = [ -5.640265, -4.48084, 5.93385 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_pinky_meta_l"
+																								origin = [ 0.562896, 0.125217, 0.989267 ]
+																								angles = [ -19.702452, 5.0792, -0.790847 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_index_meta_l"
+																								origin = [ 0.802891, 0.215317, -0.873604 ]
+																								angles = [ 3.050816, -3.75009, 12.112564 ]
+																								do_not_discard = true
+																							},
+																							{
+																								_class = "Bone"
+																								name = "finger_ring_meta_l"
+																								origin = [ 0.711815, 0.057961, 0.410495 ]
+																								angles = [ -12.33621, -1.130937, 3.830356 ]
+																								do_not_discard = true
+																							},
+																						]
+																					},
+																					{
+																						_class = "Bone"
+																						name = "arm_lower_l_twist1"
+																						origin = [ 7.657925, 0.000002, -0.000084 ]
+																						angles = [ 0.000061, 0.0, 0.000001 ]
+																						do_not_discard = true
+																					},
+																					{
+																						_class = "Bone"
+																						name = "arm_lower_l_twist"
+																						origin = [ 3.82902, -0.000007, 0.000107 ]
+																						angles = [ 0.000004, 0.000017, 0.000004 ]
+																						do_not_discard = true
+																					},
+																				]
+																			},
+																			{
+																				_class = "Bone"
+																				name = "arm_upper_l_twist1"
+																				origin = [ 7.731052, -0.007978, -0.000343 ]
+																				angles = [ 0.000057, -0.00126, -0.001546 ]
+																				do_not_discard = true
+																			},
+																			{
+																				_class = "Bone"
+																				name = "arm_upper_l_twist"
+																				origin = [ 3.86557, -0.000051, 0.000034 ]
+																				angles = [ -0.000008, -0.000003, -0.000024 ]
+																				do_not_discard = true
+																			},
+																			{
+																				_class = "Bone"
+																				name = "pect_l_aimat"
+																				origin = [ 0.000008, -0.000016, -0.000038 ]
+																				angles = [ 50.503876, 0.848274, -98.937332 ]
+																				do_not_discard = true
+																			},
+																		]
+																	},
+																	{
+																		_class = "Bone"
+																		name = "scapula_l"
+																		origin = [ 5.998293, -0.409467, -1.968727 ]
+																		angles = [ -73.393913, -74.853828, -146.586823 ]
+																		do_not_discard = true
+																	},
+																]
+															},
+															{
+																_class = "Bone"
+																name = "jiggle_primary"
+																origin = [ -6.115051, -4.868895, -6.784752 ]
+																angles = [ -6.115132, 169.363403, 145.19783 ]
+																do_not_discard = true
+															},
+															{
+																_class = "Bone"
+																name = "jiggle_back_micropouches"
+																origin = [ -0.109364, -6.601164, 0.795058 ]
+																angles = [ -81.244301, -7.681062, -102.509186 ]
+																do_not_discard = true
+															},
+															{
+																_class = "Bone"
+																name = "pect_l_aimup"
+																origin = [ 4.311497, 3.005275, 1.270477 ]
+																angles = [ -89.999939, -93.393288, 0.0 ]
+																do_not_discard = true
+															},
+															{
+																_class = "Bone"
+																name = "pect_r_aimup"
+																origin = [ 4.311493, 3.005279, -1.270481 ]
+																angles = [ -89.999939, -93.393288, 0.0 ]
+																do_not_discard = true
+															},
+															{
+																_class = "Bone"
+																name = "scap_aimup"
+																origin = [ 7.273598, -3.04516, -0.000002 ]
+																angles = [ -89.999939, -93.393288, 0.0 ]
+																do_not_discard = true
+															},
+														]
+													},
+													{
+														_class = "Bone"
+														name = "chesthier_offset"
+														origin = [ -0.000008, -0.000007, -0.0 ]
+														angles = [ -89.999939, -79.392372, 0.0 ]
+														do_not_discard = true
+														children = 
+														[
+															{
+																_class = "Bone"
+																name = "weaponhier_jnt"
+																origin = [ 0.000002, 0.000046, 0.0 ]
+																angles = [ -0.000045, -0.000019, -0.000007 ]
+																do_not_discard = true
+																children = 
+																[
+																	{
+																		_class = "Bone"
+																		name = "weaponhier_r_iktarget"
+																		origin = [ -21.164057, -8.361038, 1.10379 ]
+																		angles = [ 20.065666, 56.177162, 3.573609 ]
+																		do_not_discard = true
+																		children = 
+																		[
+																			{
+																				_class = "Bone"
+																				name = "weaponhier_l_iktarget"
+																				origin = [ 22.130836, -34.592285, 10.259848 ]
+																				angles = [ -14.682338, -117.942024, -155.82309 ]
+																				do_not_discard = true
+																			},
+																		]
+																	},
+																]
+															},
+														]
+													},
+													{
+														_class = "Bone"
+														name = "jiggle_front_micropouches"
+														origin = [ -0.869884, 5.186723, 5.650915 ]
+														angles = [ -54.713554, -90.38501, 7.940637 ]
+														do_not_discard = true
+													},
+													{
+														_class = "Bone"
+														name = "jiggle_front_pouch_01"
+														origin = [ -1.058041, 3.888949, -8.370485 ]
+														angles = [ -32.893272, 99.07859, 174.546356 ]
+														do_not_discard = true
+													},
+													{
+														_class = "Bone"
+														name = "jiggle_front_pouch_02"
+														origin = [ -1.456043, 6.942157, -4.286164 ]
+														angles = [ -66.922226, 97.326157, 175.211914 ]
+														do_not_discard = true
+													},
+													{
+														_class = "Bone"
+														name = "jiggle_radio"
+														origin = [ -0.797924, -6.914167, 3.62713 ]
+														angles = [ -86.111168, -29.717726, -52.495029 ]
+														do_not_discard = true
+													},
+													{
+														_class = "Bone"
+														name = "pectaim_l"
+														origin = [ 3.553291, 4.792305, 5.00333 ]
+														angles = [ -17.447176, -34.929352, -61.075897 ]
+														do_not_discard = true
+														children = 
+														[
+															{
+																_class = "Bone"
+																name = "pecttrans_l"
+																origin = [ 3.576706, 0.000011, -0.000034 ]
+																angles = [ -0.000003, 0.000018, -0.000002 ]
+																do_not_discard = true
+															},
+														]
+													},
+													{
+														_class = "Bone"
+														name = "pectaim_r"
+														origin = [ 3.553173, 4.792298, -5.003324 ]
+														angles = [ -17.446863, 145.070908, -61.075897 ]
+														do_not_discard = true
+														children = 
+														[
+															{
+																_class = "Bone"
+																name = "pecttrans_r"
+																origin = [ -3.576653, 0.00005, 0.000072 ]
+																angles = [ -0.000038, -0.000006, 0.000025 ]
+																do_not_discard = true
+															},
+														]
+													},
+													{
+														_class = "Bone"
+														name = "scap_r_aimat"
+														origin = [ 4.066013, -2.53091, -4.742393 ]
+														angles = [ -89.999939, -79.392372, 0.0 ]
+														do_not_discard = true
+													},
+													{
+														_class = "Bone"
+														name = "scap_l_aimat"
+														origin = [ 4.066013, -2.530912, 4.741954 ]
+														angles = [ -89.999939, -79.392372, 0.0 ]
+														do_not_discard = true
+													},
+													{
+														_class = "Bone"
+														name = "pect_l_ptbase"
+														origin = [ 3.553226, 4.792293, 5.003333 ]
+														angles = [ -89.999939, -79.392372, 0.0 ]
+														do_not_discard = true
+													},
+													{
+														_class = "Bone"
+														name = "pect_r_ptbase"
+														origin = [ 3.553185, 4.792287, -5.003324 ]
+														angles = [ -89.999939, -79.392372, 0.0 ]
+														do_not_discard = true
+													},
+												]
+											},
+										]
+									},
+								]
+							},
+							{
+								_class = "Bone"
+								name = "leg_upper_r"
+								origin = [ -3.771423, 0.913484, -3.693761 ]
+								angles = [ -2.271443, -0.82936, -0.008565 ]
+								do_not_discard = true
+								children = 
+								[
+									{
+										_class = "Bone"
+										name = "leg_lower_r"
+										origin = [ -17.90295, -0.000012, 0.000029 ]
+										angles = [ 0.000297, 7.365664, 0.000164 ]
+										do_not_discard = true
+										children = 
+										[
+											{
+												_class = "Bone"
+												name = "ankle_r"
+												origin = [ -16.937265, -0.000004, -0.000004 ]
+												angles = [ -2.794235, -68.318321, 174.713913 ]
+												do_not_discard = true
+												children = 
+												[
+													{
+														_class = "Bone"
+														name = "ball_r"
+														origin = [ -6.329627, 0.002871, 0.000256 ]
+														angles = [ 0.000115, 28.673502, 0.000002 ]
+														do_not_discard = true
+													},
+												]
+											},
+										]
+									},
+									{
+										_class = "Bone"
+										name = "leg_upper_r_twist"
+										origin = [ -5.96769, -0.000006, 0.000027 ]
+										angles = [ -0.000063, -0.00001, -0.000034 ]
+										do_not_discard = true
+									},
+									{
+										_class = "Bone"
+										name = "leg_upper_r_twist1"
+										origin = [ -11.935307, -0.000002, 0.000005 ]
+										angles = [ -0.0, 0.0, -0.000002 ]
+										do_not_discard = true
+									},
+									{
+										_class = "Bone"
+										name = "jiggle_holster"
+										origin = [ -4.588428, 0.884274, -4.984194 ]
+										angles = [ -17.130558, 87.310242, -170.348801 ]
+										do_not_discard = true
+									},
+								]
+							},
+							{
+								_class = "Bone"
+								name = "leg_upper_l"
+								origin = [ -3.771431, 0.913479, 3.694228 ]
+								angles = [ -2.271432, 179.17067, -0.008537 ]
+								do_not_discard = true
+								children = 
+								[
+									{
+										_class = "Bone"
+										name = "leg_lower_l"
+										origin = [ 17.902946, 0.000005, 0.000005 ]
+										angles = [ 0.000288, 7.365659, 0.000172 ]
+										do_not_discard = true
+										children = 
+										[
+											{
+												_class = "Bone"
+												name = "ankle_l"
+												origin = [ 16.937233, 0.000007, 0.000001 ]
+												angles = [ -2.794142, -68.292198, 174.715485 ]
+												do_not_discard = true
+												children = 
+												[
+													{
+														_class = "Bone"
+														name = "ball_l"
+														origin = [ 6.329631, 0.000002, 0.000004 ]
+														angles = [ 0.000059, 28.673445, 0.000285 ]
+														do_not_discard = true
+													},
+												]
+											},
+										]
+									},
+									{
+										_class = "Bone"
+										name = "leg_upper_l_twist"
+										origin = [ 5.967667, 0.000005, -0.000009 ]
+										angles = [ 0.000002, -0.0, -0.001031 ]
+										do_not_discard = true
+									},
+									{
+										_class = "Bone"
+										name = "leg_upper_l_twist1"
+										origin = [ 11.935287, 0.000003, -0.000006 ]
+										angles = [ 0.0, 0.0, 0.000002 ]
+										do_not_discard = true
+									},
+									{
+										_class = "Bone"
+										name = "jiggle_climbinggear_01"
+										origin = [ -3.544273, -4.397143, 2.808462 ]
+										angles = [ -52.69643, -104.526649, -170.438187 ]
+										do_not_discard = true
+										children = 
+										[
+											{
+												_class = "Bone"
+												name = "jiggle_climbinggear_02"
+												origin = [ 0.32254, -2.861008, 0.039165 ]
+												angles = [ 0.000005, -0.000006, 0.000003 ]
+												do_not_discard = true
+											},
+										]
+									},
+								]
+							},
+						]
+					},
+					{
+						_class = "Bone"
+						name = "root_motion"
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ -0.0, 90.0, 90.0 ]
+						do_not_discard = true
+						children = 
+						[
+							{
+								_class = "Bone"
+								name = "leg_l_offset"
+								origin = [ 0.0, 0.0, 0.0 ]
+								angles = [ -0.0, -0.0, -0.0 ]
+								do_not_discard = true
+								children = 
+								[
+									{
+										_class = "Bone"
+										name = "leg_l_iktarget"
+										origin = [ 4.50749, 4.331263, -3.535007 ]
+										angles = [ -58.533798, -66.801414, 64.045975 ]
+										do_not_discard = true
+									},
+								]
+							},
+							{
+								_class = "Bone"
+								name = "leg_r_offset"
+								origin = [ 0.0, 0.0, 0.0 ]
+								angles = [ -0.0, -0.0, -0.0 ]
+								do_not_discard = true
+								children = 
+								[
+									{
+										_class = "Bone"
+										name = "leg_r_iktarget"
+										origin = [ -4.507484, 4.331263, -3.535008 ]
+										angles = [ 58.533798, 66.801384, -115.954056 ]
+										do_not_discard = true
+									},
+								]
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeSphere"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 3.0
+						center = [ -3.53448, -1.72292, 0.0 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeSphere"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 5.0
+						center = [ 2.61314, 0.396103, 0.0 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeSphere"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 3.0
+						center = [ 3.45331, 1.47184, 0.0 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 4.0
+						point0 = [ 1.75483, 0.0, -0.486214 ]
+						point1 = [ -17.3936, 0.714657, -0.285032 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 7.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 9.87431, 0.470632, 0.0 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 4.0
+						point0 = [ 3.90196, 0.0, 0.269713 ]
+						point1 = [ 16.1812, 0.0, 0.266649 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 7.0
+						point0 = [ -1.02099, 1.01683, 0.0 ]
+						point1 = [ 8.89041, 0.545862, 0.0 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 4.0
+						point0 = [ -1.26783, 0.0, 0.271905 ]
+						point1 = [ 17.395901, -0.013789, 0.445297 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 2.7
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 12.028, 0.0, 0.609469 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 3.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ -11.8016, 0.0, 0.0001 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 2.7
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ -12.028, 0.0, -0.779665 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 3.0
+						point0 = [ 0.0, 0.0, 0.0 ]
+						point1 = [ 11.8016, 0.0, 0.0001 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 4.0
+						point0 = [ -3.74664, 0.954926, -0.202416 ]
+						point1 = [ -15.9105, 0.515027, -0.280735 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "playerflesh"
+						collision_tags = ""
+						radius = 2.0
+						point0 = [ -0.166774, -2.31401, 0.0 ]
+						point1 = [ 8.45359, 1.82174, 0.0 ]
+						name = ""
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = ""
+						radius = 2.0
+						point0 = [ -8.74206, -1.77027, 0.0 ]
+						point1 = [ 0.05791, 2.42214, 0.0 ]
+						name = ""
+					},
+				]
+			},
+		]
+		anim_graph_name = "characters/models/shared/animgraphs/player_ct.vanmgrph"
+	}
+}

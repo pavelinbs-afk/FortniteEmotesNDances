@@ -7,7 +7,7 @@ namespace FortniteEmotes;
 public partial class PluginConfig : BasePluginConfig
 {
     [JsonPropertyName("EmoteAllowedPeriod")]
-    public int EmoteAllowedPeriod { get; set; } = 0;
+    public int EmoteAllowedPeriod { get; set; } = 2;
 
     [JsonPropertyName("StopEmoteAfterFreezetimeEnd")]
     public bool StopEmoteAfterFreezetimeEnd { get; set; } = false;
@@ -15,14 +15,8 @@ public partial class PluginConfig : BasePluginConfig
     [JsonPropertyName("StopDamageWhenInEmote")]
     public bool StopDamageWhenInEmote { get; set; } = false;
 
-    [JsonPropertyName("EmoteMenuType")]
-    public int EmoteMenuType { get; set; } = 2;
-
     [JsonPropertyName("EmoteHidePlayers")]
     public int EmoteHidePlayers { get; set; } = 0;
-
-    [JsonPropertyName("KitsuneMenuDeveloperDisplay")]
-    public bool KitsuneMenuDeveloperDisplay { get; set; } = true;
 
     [JsonPropertyName("EmoteFreezePlayer")]
     public bool EmoteFreezePlayer { get; set; } = true;
@@ -85,5 +79,5 @@ public partial class PluginConfig : BasePluginConfig
     public bool CameraBlockObject { get; set; } = true;
 
     [JsonPropertyName("ConfigVersion")]
-    public override int Version { get; set; } = 5;
+    public override int Version { get; set; } = 6;
 }

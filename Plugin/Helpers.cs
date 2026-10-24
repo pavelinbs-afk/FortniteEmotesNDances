@@ -74,24 +74,10 @@ public partial class Plugin
 
     public bool PlayEmote(CCSPlayerController target, Emote emote, ref string error, CCSPlayerController? player = null)
     {
-        switch (Config.EmoteAllowedPeriod)
+        if (!IsEmotePeriodAllowed())
         {
-            case 1:
-                if (g_GameRules == null || (!g_GameRules.WarmupPeriod && !g_GameRules.FreezePeriod))
-                {
-                    error = $" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, "emote.notallowed.warmupftcheck")}";
-                    return false;
-                }
-                break;
-            case 2:
-                if (g_GameRules == null || (!g_GameRules.WarmupPeriod && !g_GameRules.FreezePeriod && !g_bRoundEnd))
-                {
-                    error = $" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, "emote.notallowed.warmupftrecheck")}";
-                    return false;
-                }
-                break;
-            default:
-                break;
+            error = $" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, "emote.notallowed.warmupftrecheck")}";
+            return false;
         }
 
         if (!target.IsValidPlayer() || !target.PlayerPawn.IsValidPawnAlive() || target.ControllingBot || target.PlayerPawn.Value!.AbsOrigin == null || target.PlayerPawn.Value.AbsRotation == null || target.PlayerPawn.Value.CameraServices == null)
@@ -123,7 +109,9 @@ public partial class Plugin
 
         if (target.Pawn.IsValidPawn())
         {
-            if (((PlayerFlags)target.Pawn.Value!.Flags & PlayerFlags.FL_ONGROUND) != PlayerFlags.FL_ONGROUND || (target.PlayerPawn.Value.GroundEntity != null && target.PlayerPawn.Value.GroundEntity.IsValid && target.PlayerPawn.Value.GroundEntity.Index != 0))
+            // Только FL_ONGROUND. Старый OR по GroundEntity.Index != 0 отклонял
+            // почти всех стоящих на полу (у world/пропа Index часто > 0).
+            if (((PlayerFlags)target.Pawn.Value!.Flags & PlayerFlags.FL_ONGROUND) != PlayerFlags.FL_ONGROUND)
             {
                 error = $" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, $"emote{(player == null ? "" : ".player")}.groundcheck")}";
                 return false;
@@ -176,39 +164,73 @@ public partial class Plugin
         string propName = "emoteEnt_" + new Random().Next(1000000, 9999999).ToString();
         prop.Entity.Name = propName;
 
-        prop.CBodyComponent!.SceneNode!.Owner!.Entity!.Flags &= unchecked((uint)~(1 << 2));
-
+        // CS2: SetModel на entity в staging list → EF_IN_STAGING_LIST (часто с кастомными моделями SkinChanger).
+        ClearEntityStagingFlag(prop);
         SetCollision(prop, CollisionGroup.COLLISION_GROUP_NEVER, SolidType_t.SOLID_NONE, 12);
 
-        RefreshPlayerGloves(target);
+        try { RefreshPlayerGloves(target); }
+        catch (Exception ex) { Logger.LogWarning(ex, "RefreshPlayerGloves before emote failed"); }
 
         SetPropInvisible(prop);
 
-        string model = target.PlayerPawn.Value.GetModel() ?? string.Empty;
-        if (!string.IsNullOrWhiteSpace(model))
-            prop.SetModel(model);
+        if (string.IsNullOrWhiteSpace(emote.Model))
+        {
+            prop.Remove();
+            error = $" {Localizer.ForPlayer(player, "emote.prefix")} Emote model empty in config ({emote.Name}).";
+            return false;
+        }
+
+        // prop_dynamic нельзя спавнить без модели → "has no model name!"
+        string pawnModel = target.PlayerPawn.Value.GetModel() ?? string.Empty;
+        try
+        {
+            prop.SetModel(!string.IsNullOrWhiteSpace(pawnModel) ? pawnModel : emote.Model);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "Initial emote prop SetModel failed, falling back to emote model");
+            try { prop.SetModel(emote.Model); }
+            catch
+            {
+                prop.Remove();
+                error = $" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, "emote.unknownerror")}";
+                return false;
+            }
+        }
 
         prop.DispatchSpawn();
-        prop.Teleport((Vector3)target.PlayerPawn.Value.AbsOrigin, (Vector3)target.PlayerPawn.Value.AbsRotation);
+        try
+        {
+            prop.Teleport((Vector3)target.PlayerPawn.Value.AbsOrigin, (Vector3)target.PlayerPawn.Value.AbsRotation);
+        }
+        catch { /* ignore */ }
         prop.UseAnimGraph = false;
 
         var cloneprop = CreateClone(target, prop, propName);
         g_PlayerSettings[steamID].CloneModelIndex = cloneprop?.Index ?? 0;
         g_PlayerSettings[steamID].CloneProp = prop;
 
-        // SetPlayerWeaponInvisible(target);
-
         ClearPlayerWeapons(target);
 
         g_PlayerSettings[steamID].EmoteModelIndex = prop.Index;
 
+        var emoteModel = emote.Model;
+        var animName = emote.AnimationName;
         Server.NextWorldUpdate(() =>
         {
-            if (prop == null || !prop.IsValid) return;
-
-            prop.SetModel(emote.Model);
-
-            prop.AcceptInput("SetAnimation", value: emote.AnimationName);
+            try
+            {
+                if (prop == null || !prop.IsValid) return;
+                ClearEntityStagingFlag(prop);
+                if (!string.IsNullOrWhiteSpace(emoteModel))
+                    prop.SetModel(emoteModel);
+                if (!string.IsNullOrWhiteSpace(animName))
+                    prop.AcceptInput("SetAnimation", value: animName);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogWarning(ex, "Emote prop SetModel/SetAnimation failed");
+            }
         });
 
         if (!string.IsNullOrEmpty(emote.DefaultAnimationName))
@@ -322,6 +344,24 @@ public partial class Plugin
         return bAccess;
     }
 
+    private static void ClearEntityStagingFlag(CBaseEntity entity)
+    {
+        try
+        {
+            if (entity.Entity != null)
+                entity.Entity.Flags = (uint)(entity.Entity.Flags & ~(1u << 2));
+        }
+        catch
+        {
+            try
+            {
+                if (entity.CBodyComponent?.SceneNode?.Owner?.Entity != null)
+                    entity.CBodyComponent.SceneNode.Owner.Entity.Flags &= unchecked((uint)~(1 << 2));
+            }
+            catch { /* ignore */ }
+        }
+    }
+
     private CDynamicProp? CreateClone(CCSPlayerController player, CDynamicProp prop, string propName)
     {
         string model = player.PlayerPawn.Value?.GetModel() ?? string.Empty;
@@ -330,52 +370,90 @@ public partial class Plugin
         DebugLogs("Model: " + model);
 
         if (string.IsNullOrEmpty(model))
-        {
             return null;
-        }
 
         var clone = Utilities.CreateEntityByName<CDynamicProp>("prop_dynamic");
         if (clone == null || clone.Entity == null || clone.Entity.Handle == IntPtr.Zero || !clone.IsValid)
+            return null;
+
+        clone.Entity.Name = propName + "_clone";
+        ClearEntityStagingFlag(clone);
+        SetCollision(clone, CollisionGroup.COLLISION_GROUP_NEVER, SolidType_t.SOLID_NONE, 12);
+
+        try
         {
+            clone.SetModel(model);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "CreateClone SetModel failed model={Model}", model);
+            clone.Remove();
             return null;
         }
 
-        clone.Entity.Name = propName + "_clone";
-        clone.CBodyComponent!.SceneNode!.Owner!.Entity!.Flags &= unchecked((uint)~(1 << 2));
-
-        clone.SetModel(model);
         if (meshgroupmask != 0)
         {
-            clone.SetMeshGroup(meshgroupmask);
+            try { clone.SetMeshGroup(meshgroupmask); }
+            catch { /* ignore */ }
         }
 
-        SetCollision(clone, CollisionGroup.COLLISION_GROUP_NEVER, SolidType_t.SOLID_NONE, 12);
         clone.DispatchSpawn();
-        clone.Teleport((Vector3)player.PlayerPawn.Value!.AbsOrigin!, (Vector3)player.PlayerPawn.Value.AbsRotation!);
+
+        try
+        {
+            clone.Teleport((Vector3)player.PlayerPawn.Value!.AbsOrigin!, (Vector3)player.PlayerPawn.Value.AbsRotation!);
+        }
+        catch { /* ignore */ }
         clone.UseAnimGraph = false;
 
-        clone.AcceptInput("FollowEntity", prop, prop, propName);
-
         var steamID = player.SteamID;
-
-        if (Config.EmoteFreezePlayer)
-        {
-            if (g_PlayerSettings.ContainsKey(steamID))
-                g_PlayerSettings[steamID].PlayerMoveType = Config.EmoteMenuType == 2 && Menu.GetMenus(player) != null && Menu.GetMenus(player)?.Count > 0 ? MoveType_t.MOVETYPE_WALK : player.PlayerPawn.Value.ActualMoveType;
-            SetPlayerMoveType(player, MoveType_t.MOVETYPE_OBSOLETE);
-        }
-
-        clone.Render = Color.FromArgb(255, 255, 255, 255);
-        Utilities.SetStateChanged(clone, "CBaseModelEntity", "m_clrRender");
+        var followName = propName;
 
         Server.NextWorldUpdate(() =>
         {
-            if (!g_PlayerSettings.ContainsKey(steamID)) return;
-            if (!g_PlayerSettings[steamID].IsDancing) return;
+            try
+            {
+                if (!g_PlayerSettings.ContainsKey(steamID) || !g_PlayerSettings[steamID].IsDancing)
+                    return;
+                if (clone == null || !clone.IsValid || prop == null || !prop.IsValid)
+                    return;
 
-            g_PlayerSettings[steamID].PlayerAlpha = player.PlayerPawn.Value!.Render.A;
-            SetPlayerInvisible(player);
+                ClearEntityStagingFlag(clone);
+                // Повторный SetModel после spawn — стабильнее с кастомными скинами.
+                try
+                {
+                    clone.SetModel(model);
+                    if (meshgroupmask != 0)
+                        clone.SetMeshGroup(meshgroupmask);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogWarning(ex, "CreateClone re-SetModel failed");
+                }
+
+                clone.AcceptInput("FollowEntity", prop, prop, followName);
+
+                clone.Render = Color.FromArgb(255, 255, 255, 255);
+                Utilities.SetStateChanged(clone, "CBaseModelEntity", "m_clrRender");
+
+                if (Config.EmoteFreezePlayer && player.IsValidPlayer() && player.PlayerPawn.IsValidPawnAlive())
+                {
+                    g_PlayerSettings[steamID].PlayerMoveType = player.PlayerPawn.Value!.ActualMoveType;
+                    SetPlayerMoveType(player, MoveType_t.MOVETYPE_OBSOLETE);
+                }
+
+                if (player.IsValidPlayer() && player.PlayerPawn.IsValidPawnAlive())
+                {
+                    g_PlayerSettings[steamID].PlayerAlpha = player.PlayerPawn.Value!.Render.A;
+                    SetPlayerInvisible(player);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogWarning(ex, "CreateClone NextWorldUpdate failed");
+            }
         });
+
         return clone;
     }
 
@@ -415,32 +493,51 @@ public partial class Plugin
         return g_PlayerSettings.ContainsKey(steamID) && g_PlayerSettings[steamID].IsDancing;
     }
 
-    public bool IsReadyForDancing(CCSPlayerController player)
+    /// <summary>
+    /// EmoteAllowedPeriod: 0 = всегда; 1 = разминка/freeze; 2 = разминка/freeze/конец раунда.
+    /// </summary>
+    private bool IsEmotePeriodAllowed()
     {
+        EnsureGameRules();
+
         switch (Config.EmoteAllowedPeriod)
         {
             case 1:
-                if (g_GameRules == null || (!g_GameRules.WarmupPeriod && !g_GameRules.FreezePeriod))
-                {
-                    return false;
-                }
-                break;
+                return g_GameRules != null && (g_GameRules.WarmupPeriod || g_GameRules.FreezePeriod);
             case 2:
-                if (g_GameRules == null || (!g_GameRules.WarmupPeriod && !g_GameRules.FreezePeriod && !g_bRoundEnd))
-                {
-                    return false;
-                }
-                break;
+                return g_GameRules != null &&
+                       (g_GameRules.WarmupPeriod || g_GameRules.FreezePeriod || g_bRoundEnd);
             default:
-                break;
+                return true;
         }
+    }
+
+    private void EnsureGameRules()
+    {
+        if (g_GameRules != null)
+            return;
+        try
+        {
+            g_GameRules = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules")
+                .FirstOrDefault()?.GameRules;
+        }
+        catch
+        {
+            g_GameRules = null;
+        }
+    }
+
+    public bool IsReadyForDancing(CCSPlayerController player)
+    {
+        if (!IsEmotePeriodAllowed())
+            return false;
 
         if (!player.IsValidPlayer() || !player.PlayerPawn.IsValidPawnAlive())
             return false;
 
         if (player.Pawn.IsValidPawn())
         {
-            if (((PlayerFlags)player.Pawn.Value!.Flags & PlayerFlags.FL_ONGROUND) != PlayerFlags.FL_ONGROUND || (player.PlayerPawn.Value!.GroundEntity != null && player.PlayerPawn.Value.GroundEntity.IsValid && player.PlayerPawn.Value.GroundEntity.Index != 0))
+            if (((PlayerFlags)player.Pawn.Value!.Flags & PlayerFlags.FL_ONGROUND) != PlayerFlags.FL_ONGROUND)
                 return false;
             if (((PlayerFlags)player.Pawn.Value!.Flags & PlayerFlags.FL_DUCKING) == PlayerFlags.FL_DUCKING)
                 return false;
@@ -544,14 +641,14 @@ public partial class Plugin
         SetPlayerVisible(player);
 
         if (g_PlayerSettings.ContainsKey(steamID)
-            && (Config.EmoteMenuType != 2 || (Config.EmoteMenuType == 2 && (Menu.GetMenus(player) == null || Menu.GetMenus(player)?.Count <= 0)))
             && player.PlayerPawn.IsValidPawnAlive()
             && g_PlayerSettings[steamID].PlayerMoveType != player.PlayerPawn.Value!.ActualMoveType)
             SetPlayerMoveType(player, g_PlayerSettings[steamID].PlayerMoveType);
 
-        RefreshPlayerGloves(player, true);
+        try { RefreshPlayerGloves(player, true); }
+        catch (Exception ex) { Logger.LogWarning(ex, "RefreshPlayerGloves after StopEmote failed"); }
 
-        var activeWeapon = player.PlayerPawn.Value!.WeaponServices!.ActiveWeapon.Value;
+        var activeWeapon = player.PlayerPawn.Value?.WeaponServices?.ActiveWeapon.Value;
 
         if (activeWeapon != null && activeWeapon.IsValid)
         {
@@ -606,10 +703,33 @@ public partial class Plugin
         collisionRulesChanged.Invoke(entity.Handle);
     }
 
-    private static readonly int _collisionRulesChangedOffset = GameData.GetOffset("CBaseEntity_CollisionRulesChanged");
+    private static int? _collisionRulesChangedOffset;
+
+    private static int GetCollisionRulesChangedOffset()
+    {
+        if (_collisionRulesChangedOffset.HasValue)
+            return _collisionRulesChangedOffset.Value;
+
+        try
+        {
+            _collisionRulesChangedOffset = GameData.GetOffset("CBaseEntity_CollisionRulesChanged");
+        }
+        catch
+        {
+            // Нет в глобальном gamedata.json — fallback из Plugin/gamedata/fortnite_emotes.json
+            // (файл должен лежать в addons/counterstrikesharp/gamedata/fortnite_emotes.json).
+            _collisionRulesChangedOffset = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? 186 : 185;
+            Server.PrintToConsole(
+                "[FortniteEmotes] CBaseEntity_CollisionRulesChanged not in gamedata — using fallback offset. " +
+                "Copy plugins/.../gamedata/fortnite_emotes.json → addons/counterstrikesharp/gamedata/");
+        }
+
+        return _collisionRulesChangedOffset.Value;
+    }
+
     private static VirtualFunctionVoid<nint> GetCollisionRulesChanged(nint handle)
     {
-        return new VirtualFunctionVoid<nint>(handle, _collisionRulesChangedOffset);
+        return new VirtualFunctionVoid<nint>(handle, GetCollisionRulesChangedOffset());
     }
 
     private CDynamicProp? SetCam(CCSPlayerController player)
@@ -997,19 +1117,33 @@ public partial class Plugin
         if (playerPawnValue == null)
             return;
 
-        CEconItemView item = playerPawnValue.EconGloves;
-        item.NetworkedDynamicAttributes.Attributes.RemoveAll();
-        item.AttributeList.Attributes.RemoveAll();
+        try
+        {
+            CEconItemView item = playerPawnValue.EconGloves;
+            item.NetworkedDynamicAttributes.Attributes.RemoveAll();
+            item.AttributeList.Attributes.RemoveAll();
 
-        SetBodygroup(playerPawnValue, "first_or_third_person", 0);
+            SetBodygroup(playerPawnValue, "first_or_third_person", 0);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogWarning(ex, "RefreshPlayerGloves bodygroup/attrs failed (SkinChanger gloves?)");
+            return;
+        }
 
         if (update) return;
 
         AddTimer(0.2f, () =>
         {
-            // TODO: Re-give gloves
-
-            SetBodygroup(playerPawnValue, "first_or_third_person", 1);
+            try
+            {
+                if (!player.IsValidPlayer() || !player.PlayerPawn.IsValidPawnAlive())
+                    return;
+                var pawn = player.PlayerPawn.Value;
+                if (pawn == null) return;
+                SetBodygroup(pawn, "first_or_third_person", 1);
+            }
+            catch { /* ignore */ }
         });
     }
 
@@ -1165,7 +1299,7 @@ public partial class Plugin
         return File.Exists(vdfPath) && File.Exists(binaryPath);
     }
 
-    private readonly string[] _requiredShared = ["FortniteEmotesNDancesAPI", "KitsuneMenu"];
+    private readonly string[] _requiredShared = ["FortniteEmotesNDancesAPI"];
     private bool AreAllDependaciesInstalled(ref string error)
     {
         string vdfPath = Path.Combine(Server.GameDirectory, "csgo", "addons/metamod", "multiaddonmanager.vdf");
@@ -1179,11 +1313,19 @@ public partial class Plugin
 
         foreach (var depen in _requiredShared)
         {
-            string dllPath = Path.Combine(Server.GameDirectory, "csgo", "addons/counterstrikesharp/shared", depen, $"{depen}.dll");
+            // Только глобальный CSS shared/, не рядом с плагином и не plugins/*/shared.
+            string dllPath = Path.Combine(
+                Server.GameDirectory,
+                "csgo",
+                "addons",
+                "counterstrikesharp",
+                "shared",
+                depen,
+                $"{depen}.dll");
 
             if (!File.Exists(dllPath))
             {
-                error = $"{depen} is not installed.";
+                error = $"{depen} is not installed at addons/counterstrikesharp/shared/{depen}/{depen}.dll";
                 return false;
             }
         }

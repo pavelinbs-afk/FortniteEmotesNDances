@@ -89,6 +89,11 @@ public interface IFortniteEmotesAPI
     public bool IsReadyForDancing(CCSPlayerController player);
 
     /// <summary>
+    /// returns JSON catalog for VIP/SkinChanger menu: { emotes:[], dances:[] }
+    /// </summary>
+    public string? GetEmoteCatalogJson(CCSPlayerController player);
+
+    /// <summary>
     /// returns emote list
     /// </summary>
     /// <param name="handler">Get list of all emotes</param>

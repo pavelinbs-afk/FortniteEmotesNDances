@@ -2,6 +2,7 @@ using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Cvars;
+using CounterStrikeSharp.API.Modules.Utils;
 
 namespace FortniteEmotes;
 
@@ -78,15 +79,6 @@ public partial class Plugin
             return HookResult.Continue;
 
         StopEmote(player, true);
-
-        Server.NextWorldUpdate(() =>
-        {
-            if (player == null || !player.IsValid)
-                return;
-
-            if (Config.EmoteMenuType == 2 && Menu != null && Menu.GetMenus(player) != null && Menu.GetMenus(player)!.Where(m => m.RequiresFreeze)?.Count() > 0)
-                SetPlayerMoveType(player, MoveType_t.MOVETYPE_OBSOLETE);
-        });
         return HookResult.Continue;
     }
 
@@ -103,7 +95,26 @@ public partial class Plugin
         {
             StopEmote(player);
         }
+
+        // Конец раунда по вайпу команды — до EventRoundEnd, чтобы танцы сразу работали.
+        if (!g_bRoundEnd && IsOneTeamEliminated())
+            g_bRoundEnd = true;
+
         return HookResult.Continue;
+    }
+
+    /// <summary>Одна сторона жива, другая — нет (после вайпа T или CT).</summary>
+    private static bool IsOneTeamEliminated()
+    {
+        int t = 0, ct = 0;
+        foreach (var p in Utilities.GetPlayers())
+        {
+            if (p == null || !p.IsValid || p.IsHLTV || !p.PawnIsAlive)
+                continue;
+            if (p.Team == CsTeam.Terrorist) t++;
+            else if (p.Team == CsTeam.CounterTerrorist) ct++;
+        }
+        return (t == 0 && ct > 0) || (ct == 0 && t > 0);
     }
 
     [GameEventHandler]
