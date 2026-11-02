@@ -56,4 +56,22 @@
           Condition="Exists('configs\FortniteEmotesNDances.json')" />
   </Target>
 
+  <!-- Контент FortniteEmotes (модель + soundevents + звуки) — отдельно от Perfect Team Assets.
+       Выход: FortniteEmotesNDances/csgo_addons/ рядом с plugins/, configs/, gamedata/ -->
+  <Target Name="CopyCsgoAddons" AfterTargets="Build;Publish"
+          Condition="Exists('$(MSBuildThisFileDirectory)..\csgo_addons')">
+    <PropertyGroup>
+      <CsgoAddonsSrc>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\csgo_addons'))</CsgoAddonsSrc>
+      <CsgoAddonsDst>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)FortniteEmotesNDances\csgo_addons'))</CsgoAddonsDst>
+    </PropertyGroup>
+    <ItemGroup>
+      <CsgoAddonFiles Include="$(CsgoAddonsSrc)\**\*.*" />
+    </ItemGroup>
+    <MakeDir Directories="$(CsgoAddonsDst)" />
+    <Copy SourceFiles="@(CsgoAddonFiles)"
+          DestinationFiles="@(CsgoAddonFiles->'$(CsgoAddonsDst)\%(RecursiveDir)%(Filename)%(Extension)')"
+          SkipUnchangedFiles="true" />
+    <Message Importance="high" Text="Copied FortniteEmotes content → $(CsgoAddonsDst)" />
+  </Target>
+
 </Project>

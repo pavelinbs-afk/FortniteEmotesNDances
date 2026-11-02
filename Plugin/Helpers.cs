@@ -74,6 +74,12 @@ public partial class Plugin
 
     public bool PlayEmote(CCSPlayerController target, Emote emote, ref string error, CCSPlayerController? player = null)
     {
+        if (!EmoteResourcesReady)
+        {
+            error = $" {Localizer.ForPlayer(player, "emote.prefix")} Модели танцев ещё загружаются, подожди пару секунд.";
+            return false;
+        }
+
         if (!IsEmotePeriodAllowed())
         {
             error = $" {Localizer.ForPlayer(player, "emote.prefix")} {Localizer.ForPlayer(player, "emote.notallowed.warmupftrecheck")}";

@@ -7,11 +7,13 @@ using CounterStrikeSharp.API.Modules.Memory;
 using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Modules.Memory.DynamicFunctions;
 using CounterStrikeSharp.API.Modules.Cvars;
+using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.UserMessages;
 using CounterStrikeSharp.API.Core.Translations;
 using Microsoft.Extensions.Logging;
 using FortniteEmotes.API;
 using System.Text.Json;
+using CSSTimer = CounterStrikeSharp.API.Modules.Timers.Timer;
 
 namespace FortniteEmotes;
 
@@ -44,6 +46,12 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
     private Dictionary<int, Dictionary<int, ushort>> playerItems = [];
 
     public FakeConVar<bool> EmotesEnable = new("css_fortnite_emotes_enable", "ConVar to toggle emotes and dances", true);
+
+    /// <summary>Задержка, пока MultiAddonManager смонтирует VPK (иначе FILEOPEN на старте).</summary>
+    private const float AddonMountDelaySeconds = 15.0f;
+    /// <summary>true после отложенного PrecacheModel / soundevents.</summary>
+    internal bool EmoteResourcesReady { get; private set; }
+    private CSSTimer? _emoteResourcesTimer;
 
     public void OnConfigParsed(PluginConfig config)
     {
@@ -341,6 +349,8 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 
         RegisterListener<Listeners.OnMapStart>(OnMapStart);
         RegisterListener<Listeners.OnTick>(OnTick);
+        // Addon models/soundevents — не AddResource на старте (FILEOPEN до mount VPK).
+        // Stock chicken.vmdl можно сразу; остальное — после AddonMountDelaySeconds.
         RegisterListener<Listeners.OnServerPrecacheResources>(OnServerPrecacheResources);
 
         Transmit_OnLoad();
@@ -370,6 +380,10 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
         Transmit_OnUnload();
 
         StopAllEmotes();
+
+        _emoteResourcesTimer?.Kill();
+        _emoteResourcesTimer = null;
+        EmoteResourcesReady = false;
 
         RemoveAllCommands();
 
@@ -493,10 +507,46 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 
         playerItems.Clear();
 
+        EmoteResourcesReady = false;
+        _emoteResourcesTimer?.Kill();
+        _emoteResourcesTimer = AddTimer(AddonMountDelaySeconds, OnEmoteResourcesDelayElapsed, TimerFlags.STOP_ON_MAPCHANGE);
+        Logger.LogInformation(
+            "[FortniteEmotes] Addon emote resources scheduled in {Delay}s (waiting for mount)",
+            AddonMountDelaySeconds);
+
         AddTimer(1.0f, () =>
         {
             g_GameRules = Utilities.FindAllEntitiesByDesignerName<CCSGameRulesProxy>("cs_gamerules").First().GameRules!;
         });
+    }
+
+    private void OnEmoteResourcesDelayElapsed()
+    {
+        _emoteResourcesTimer = null;
+        PrecacheEmoteResourcesNow();
+        EmoteResourcesReady = true;
+        Logger.LogInformation(
+            "[FortniteEmotes] Emote models/soundevents precached after {Delay}s delay",
+            AddonMountDelaySeconds);
+    }
+
+    private void PrecacheEmoteResourcesNow()
+    {
+        foreach (var sefile in Config.EmoteSoundEventFiles)
+        {
+            if (string.IsNullOrWhiteSpace(sefile)) continue;
+            DebugLogs("Delayed precache sef: " + sefile);
+            try { Server.PrecacheModel(sefile); } catch { /* ignore */ }
+        }
+
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var emote in Config.EmoteDances)
+        {
+            if (string.IsNullOrWhiteSpace(emote.Model) || !seen.Add(emote.Model))
+                continue;
+            DebugLogs("Delayed precache model: " + emote.Model);
+            try { Server.PrecacheModel(emote.Model); } catch { /* ignore */ }
+        }
     }
 
     public void OnTick()
@@ -576,25 +626,10 @@ public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 
     public void OnServerPrecacheResources(ResourceManifest resource)
     {
-        foreach (var sefile in Config.EmoteSoundEventFiles)
-        {
-            DebugLogs("Precaching sef: " + sefile);
-            resource.AddResource(sefile);
-        }
-
-        List<string> precachedModels = new();
-
-        foreach (var emote in Config.EmoteDances)
-        {
-            if (precachedModels.Contains(emote.Model))
-                continue;
-
-            DebugLogs("Precaching model: " + emote.Model);
-            resource.AddResource(emote.Model);
-            precachedModels.Add(emote.Model);
-        }
-
-        resource.AddResource("models/chicken/chicken.vmdl"); // Needs precache in non-competitive maps
+        // Только stock CS2. Addon paths (fortnite_dance / fortnite_emotes.vsndevts)
+        // на старте карты ещё не смонтированы → FILEOPEN spam; их PrecacheModel
+        // после AddonMountDelaySeconds (см. OnMapStart).
+        resource.AddResource("models/chicken/chicken.vmdl");
     }
 
     [ConsoleCommand("css_et", "Displays all chat triggers for emotes/dance")]
