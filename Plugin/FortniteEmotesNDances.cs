@@ -15,7 +15,7 @@ using System.Text.Json;
 
 namespace FortniteEmotes;
 
-[MinimumApiVersion(361)]
+[MinimumApiVersion(377)]
 public partial class Plugin : BasePlugin, IPluginConfig<PluginConfig>
 {
     public override string ModuleName => "Fortnite Emotes & Dances";
